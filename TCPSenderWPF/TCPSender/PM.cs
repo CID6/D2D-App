@@ -289,8 +289,8 @@ namespace TCPSender
         public string OutputStringV2()
         {
             string ret = "";
-            string read = Application.Current.MainWindow.FindResource("Read").ToString();
-            string write = Application.Current.MainWindow.FindResource("Write").ToString();
+           // string read = Application.Current.MainWindow.FindResource("Read").ToString();
+           // string write = Application.Current.MainWindow.FindResource("Write").ToString();
 
             //Console.WriteLine(CPUName);
             ret += CPUName + "\n";
@@ -352,17 +352,17 @@ namespace TCPSender
                 ret += "Size: " + HDDSizes[i] + "GB" + "\n";
 
                 //Console.WriteLine("Read: " + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
-                ret += read + " " + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB / S" + "\n";
+                ret += "Read: " + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB / S" + "\n";
 
                 //Console.WriteLine("Write: " + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
 
                 if (i< HDDReadsC.Count - 1)
                 {
-                    ret += write + " " + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S" + "\n"; 
+                    ret += "Write: " + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S" + "\n"; 
                 }
                 else
                 {
-                    ret += write + " " + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S";
+                    ret += "Write: " + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S";
                 }
             }
 

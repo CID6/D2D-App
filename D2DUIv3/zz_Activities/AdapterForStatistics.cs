@@ -2,8 +2,8 @@
 
 using Android.Views;
 using Android.Widget;
-using Android.Support.V7.Widget;
 using Android.Runtime;
+using AndroidX.RecyclerView.Widget;
 
 namespace D2DUIv3
 {

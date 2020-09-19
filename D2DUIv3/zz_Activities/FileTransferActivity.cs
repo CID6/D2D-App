@@ -8,12 +8,12 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
-using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
-using Android.Support.Design.Widget;
 using Android.Webkit;
 using System.IO;
+using AndroidX.AppCompat.App;
+using Google.Android.Material.Snackbar;
 
 namespace D2DUIv3
 {

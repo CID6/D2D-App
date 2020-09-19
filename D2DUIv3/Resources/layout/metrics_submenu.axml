@@ -6,7 +6,7 @@
 	android:layout_height="match_parent"
 	android:minWidth="25px"
 	android:minHeight="25px">
-	<android.support.v7.widget.RecyclerView
+	<androidx.recyclerview.widget.RecyclerView
 		android:minWidth="25px"
 		android:minHeight="25px"
 		android:layout_width="match_parent"
