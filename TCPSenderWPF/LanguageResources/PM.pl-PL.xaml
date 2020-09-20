@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:TCPSenderWPF.LanguageResources"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="ResourceDictionaryName">PM-en-EN</sys:String>
+    <sys:String x:Key="Read">Odczyt:</sys:String>
+    <sys:String x:Key="Write">Zapis:</sys:String>
+    <sys:String x:Key="Size">Rozmiar:</sys:String>
+    <sys:String x:Key="Drive">Dysk:</sys:String>
+    <sys:String x:Key="Motherboard">Płyta główna:</sys:String>
+    <sys:String x:Key="MemoryUsedTotal">Pamięć używana/całkowita:</sys:String>
+</ResourceDictionary>

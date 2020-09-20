@@ -10,6 +10,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <!--  FluentWPF Controls  -->
                 <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="LanguageResources/PM.en-EN.xaml"/>
+                <ResourceDictionary Source="LanguageResources/PM.pl-PL.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

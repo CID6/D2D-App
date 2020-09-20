@@ -88,7 +88,7 @@ namespace TCPSender
                 //hardware.Update();
                 if (hardware.HardwareType == HardwareType.CPU)
                 {
-                    CPUName = "Processor: " + hardware.Name;
+                    CPUName = "CPU: " + hardware.Name;
 
                     foreach (ISensor sensor in hardware.Sensors)
                     {
@@ -99,7 +99,7 @@ namespace TCPSender
 
                 if (hardware.HardwareType == HardwareType.Mainboard)
                 {
-                    MOBOName = "Motherboard: " + hardware.Name;
+                    MOBOName = Application.Current.FindResource("Motherboard") + hardware.Name;
 
                     //foreach (ISensor sensor in hardware.Sensors)
                     //{
@@ -131,7 +131,7 @@ namespace TCPSender
 
                         }
                     }
-                    RAMSensors.Add("Memory Used/Total: " + RAMUsed.ToString("0.00") + "GB/" + RAMTotal + "GB");
+                    RAMSensors.Add(Application.Current.FindResource("MemoryUsedTotal") + RAMUsed.ToString("0.00") + "GB/" + RAMTotal + "GB");
                 }
 
                 //if (hardware.HardwareType == HardwareType.HDD)
@@ -206,9 +206,9 @@ namespace TCPSender
             GPUNVSensors.ForEach(Console.WriteLine);
             for (int i = 0; i < HDDReadsC.Count; i++)
             {
-                Console.WriteLine(HDDNames[i] + " Size: " + HDDSizes[i] + "GB");
-                Console.WriteLine("Read: " + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
-                Console.WriteLine("Write: " + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
+                Console.WriteLine(HDDNames[i] + Application.Current.FindResource("Size") + HDDSizes[i] + "GB");
+                Console.WriteLine(Application.Current.FindResource("Read") + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
+                Console.WriteLine(Application.Current.FindResource("Write") + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
             }
             //HDDNames.ForEach(Console.WriteLine);
             //HDDSizes.ForEach(Console.WriteLine);
@@ -274,7 +274,7 @@ namespace TCPSender
             for (int i = 0; i < HDDReadsC.Count; i++)
             {
                 //Console.WriteLine(HDDNames[i] + " Size: " + HDDSizes[i] + "GB");
-                ret += HDDNames[i] + " Size: " + HDDSizes[i] + "GB" + "\n";
+                ret += HDDNames[i] + Application.Current.FindResource("Size") + HDDSizes[i] + "GB" + "\n";
 
                 //Console.WriteLine("Read: " + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
                 ret += Application.Current.MainWindow.FindResource("Read") + " " + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB / S" + "\n";
@@ -346,23 +346,23 @@ namespace TCPSender
             for (int i = 0; i < HDDReadsC.Count; i++)
             {
                 //Console.WriteLine(HDDNames[i] + " Size: " + HDDSizes[i] + "GB");
-                ret += "Drive: " + HDDNames[i] + "\n";
+                ret += Application.Current.FindResource("Drive") + HDDNames[i] + "\n";
 
                 //Split volume string
-                ret += "Size: " + HDDSizes[i] + "GB" + "\n";
+                ret += Application.Current.FindResource("Size").ToString() + HDDSizes[i] + "GB" + "\n";
 
                 //Console.WriteLine("Read: " + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
-                ret += "Read: " + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB / S" + "\n";
+                ret += Application.Current.FindResource("Read") + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB / S" + "\n";
 
                 //Console.WriteLine("Write: " + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
 
                 if (i< HDDReadsC.Count - 1)
                 {
-                    ret += "Write: " + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S" + "\n"; 
+                    ret += Application.Current.FindResource("Write") + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S" + "\n"; 
                 }
                 else
                 {
-                    ret += "Write: " + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S";
+                    ret += Application.Current.FindResource("Write") + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S";
                 }
             }
 
@@ -436,9 +436,9 @@ namespace TCPSender
             // Console.Clear();
             for (int i = 0; i < HDDReadsC.Count; i++)
             {
-                Console.WriteLine(HDDNames[i] + " Size: " + HDDSizes[i] + "GB");
-                Console.WriteLine("Read: " + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
-                Console.WriteLine("Write: " + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
+                Console.WriteLine(HDDNames[i] + Application.Current.FindResource("Size") + HDDSizes[i] + "GB");
+                Console.WriteLine(Application.Current.FindResource("Read") + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
+                Console.WriteLine(Application.Current.FindResource("Write") + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
             }
             //Thread.Sleep(1000);
             //}
