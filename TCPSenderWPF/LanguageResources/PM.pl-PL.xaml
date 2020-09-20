@@ -9,4 +9,8 @@
     <sys:String x:Key="Drive">Dysk:</sys:String>
     <sys:String x:Key="Motherboard">Płyta główna:</sys:String>
     <sys:String x:Key="MemoryUsedTotal">Pamięć używana/całkowita:</sys:String>
+    <sys:String x:Key="CPUCore">Rdzeń CPU</sys:String>
+    <sys:String x:Key="CPUTotal">Całe CPU</sys:String>
+    <sys:String x:Key="GPUCore">Rdzeń GPU</sys:String>
+    <sys:String x:Key="GPUMem">Pamięć GPU</sys:String>
 </ResourceDictionary>

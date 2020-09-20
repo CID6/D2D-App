@@ -80,6 +80,28 @@ namespace TCPSender
         public List<PerformanceCounter> HDDWritesC { get; internal set; } = new List<PerformanceCounter>();
         public List<Tuple<string, string>> DriveIDNames { get; internal set; } = new List<Tuple<string, string>>();
 
+        public void Translate(ISensor[] sensors)
+        {
+            foreach (ISensor sensor in sensors)
+            {
+                if (sensor.Name.Contains("CPU Core"))
+                {
+                   sensor.Name =  sensor.Name.Replace("CPU Core", Application.Current.FindResource("CPUCore").ToString());
+                }
+                if (sensor.Name.Contains("CPU Total"))
+                {
+                    sensor.Name = sensor.Name.Replace("CPU Total", Application.Current.FindResource("CPUTotal").ToString());
+                }
+                if (sensor.Name.Contains("GPU Core"))
+                {
+                    sensor.Name = sensor.Name.Replace("GPU Core", Application.Current.FindResource("GPUCore").ToString());
+                }
+                if (sensor.Name.Contains("GPU Memory"))
+                {
+                    sensor.Name = sensor.Name.Replace("GPU Memory", Application.Current.FindResource("GPUMem").ToString());
+                }
+            }
+        }
         public void GetInfo()
         {
             ClearAllLists();
@@ -95,6 +117,7 @@ namespace TCPSender
                         if (sensor.SensorType == SensorType.Load) { CPUSensors.Add(sensor.Name + ": " + sensor.Value.GetValueOrDefault().ToString("0.") + "%"); }
                         if (sensor.SensorType == SensorType.Temperature && sensor.Name == "CPU Package") { CPUSensors.Add(sensor.Name + ": " + sensor.Value.GetValueOrDefault().ToString("0.") + "°C"); }
                     }
+                    Translate(hardware.Sensors);
                 }
 
                 if (hardware.HardwareType == HardwareType.Mainboard)
@@ -153,6 +176,7 @@ namespace TCPSender
                         if (sensor.SensorType == SensorType.Load) GPUATISensors.Add(sensor.Name + ": " + sensor.Value.GetValueOrDefault().ToString("0.") + "%");
                         if (sensor.SensorType == SensorType.Temperature && (!sensor.Name.Contains("VRM") && (!sensor.Name.Contains("Hot Spot")))) GPUATISensors.Add(sensor.Name + ": " + sensor.Value.GetValueOrDefault() + "°C");
                     }
+                    Translate(hardware.Sensors);
                 }
 
                 if (hardware.HardwareType == HardwareType.GpuNvidia)
@@ -163,6 +187,7 @@ namespace TCPSender
                         if (sensor.SensorType == SensorType.Load) GPUNVSensors.Add(sensor.Name + ": " + sensor.Value.GetValueOrDefault() + "%");
                         if (sensor.SensorType == SensorType.Temperature) GPUNVSensors.Add(sensor.Name + ": " + sensor.Value.GetValueOrDefault() + "°C");
                     }
+                    Translate(hardware.Sensors);
                 }
             }
         }
@@ -277,7 +302,7 @@ namespace TCPSender
                 ret += HDDNames[i] + Application.Current.FindResource("Size") + HDDSizes[i] + "GB" + "\n";
 
                 //Console.WriteLine("Read: " + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
-                ret += Application.Current.MainWindow.FindResource("Read") + " " + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB / S" + "\n";
+                ret += Application.Current.MainWindow.FindResource("Read") + " " + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S" + "\n";
 
                 //Console.WriteLine("Write: " + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
                 ret += Application.Current.MainWindow.FindResource("Write") + " " + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S" + "\n";
@@ -352,7 +377,7 @@ namespace TCPSender
                 ret += Application.Current.FindResource("Size").ToString() + HDDSizes[i] + "GB" + "\n";
 
                 //Console.WriteLine("Read: " + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
-                ret += Application.Current.FindResource("Read") + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB / S" + "\n";
+                ret += Application.Current.FindResource("Read") + (HDDReadsC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S" + "\n";
 
                 //Console.WriteLine("Write: " + (HDDWritesC[i].NextValue() / 1024 / 1024).ToString("0.00") + "MB/S");
 

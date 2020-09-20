@@ -9,6 +9,8 @@
     <sys:String x:Key="Drive">Drive:</sys:String>
     <sys:String x:Key="Motherboard">Motherboard:</sys:String>
     <sys:String x:Key="MemoryUsedTotal">Memory Used/Total:</sys:String>
-    
-
+    <sys:String x:Key="CPUCore">CPU Core</sys:String>
+    <sys:String x:Key="CPUTotal">CPU Total</sys:String>
+    <sys:String x:Key="GPUCore">GPU Core</sys:String>
+    <sys:String x:Key="GPUMem">GPU Memory</sys:String>
 </ResourceDictionary>

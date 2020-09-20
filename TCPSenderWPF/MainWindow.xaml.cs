@@ -418,19 +418,25 @@ namespace TCPSenderWPF
         {
             if(Properties.Settings.Default.SystemLanguage == "pl")
             {
-                var languageDictionary = new ResourceDictionary();
+                var languageDictionaryMW = new ResourceDictionary();
+                var languageDictionaryPM = new ResourceDictionary();
                 string directory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                languageDictionary.Source = new Uri("\\LanguageResources\\MainWindow.pl-PL.xaml", UriKind.Relative);
+                languageDictionaryMW.Source = new Uri("\\LanguageResources\\MainWindow.pl-PL.xaml", UriKind.Relative);
+                languageDictionaryPM.Source = new Uri("\\LanguageResources\\PM.pl-PL.xaml", UriKind.Relative);
 
-                this.Resources.MergedDictionaries.Add(languageDictionary);
+                this.Resources.MergedDictionaries.Add(languageDictionaryMW);
+                System.Windows.Application.Current.Resources.MergedDictionaries.Add(languageDictionaryPM);
             }
             else if(Properties.Settings.Default.SystemLanguage == "en")
             {
-                var languageDictionary = new ResourceDictionary();
+                var languageDictionaryMW = new ResourceDictionary();
+                var languageDictionaryPM = new ResourceDictionary();
                 string directory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                languageDictionary.Source = new Uri("\\LanguageResources\\MainWindow.en-EN.xaml", UriKind.Relative);
+                languageDictionaryMW.Source = new Uri("\\LanguageResources\\MainWindow.en-EN.xaml", UriKind.Relative);
+                languageDictionaryPM.Source = new Uri("\\LanguageResources\\PM.en-EN.xaml", UriKind.Relative);
 
-                this.Resources.MergedDictionaries.Add(languageDictionary);
+                this.Resources.MergedDictionaries.Add(languageDictionaryMW);
+                System.Windows.Application.Current.Resources.MergedDictionaries.Add(languageDictionaryPM);
             }
         }
 
