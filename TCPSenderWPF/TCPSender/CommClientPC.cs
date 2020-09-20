@@ -10,6 +10,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using TCPSenderWPF.TCPSender;
 
 namespace TCPSender
 {
@@ -28,12 +30,14 @@ namespace TCPSender
         TcpClient client;               //klient tcp dla komend
         IPAddress cIP;                  //adres IP. Zalezy od tego czy instancja jest klientem czy serwerem
         Action<string> DebugLogAction;      //funkcja ktora jest wywolywana gdy pojawi sie message od hosta
+        string iso_lang;
         public bool IsConnected { get; internal set; }
         public Action<string> DisconnectAction { internal get; set; }//USTAWIAC DELEGATY!!!
         public Action<string> ConnectedAction { internal get; set; }
         public Action<string> DeviceNameAction { internal get; set; }
         public Action<List<string>> FileInstAction { internal get; set; }   //wypelnia liste plikow plikami
         public Action<string> FileRemoveAction { internal get; set; }   //usuwa plik z listy
+        public Action<string> LanguageCodeAction { internal get; set; } //pobiera kod języka ustawionego w Androidzie
 
         BinaryWriter writer;            //writer dla SendMessage, tutaj zeby nie tworzyc caly czas nowego. na porcie 50001
         int BUFFER_SIZE = 10000;                       //rozmiar bufora dla danych pliku w bajtach
@@ -182,6 +186,9 @@ namespace TCPSender
                 }
                 else if (input == (int)ClientFlags.PM_Instantiate)
                 {
+                    iso_lang = reader.ReadString();
+                    ISOLanguageHolder.ISOLanguage = iso_lang;
+                    ChoosePMLanguage();
                     if(pMetricsClient == null)
                     {
                         InstantiatePMServer();
@@ -850,6 +857,21 @@ namespace TCPSender
             return localIP;
         }
 
+        private void ChoosePMLanguage()
+        {
+            if (ISOLanguageHolder.ISOLanguage == "pl")
+            {
+                var languageDictionaryPM = new ResourceDictionary();
+                languageDictionaryPM.Source = new Uri("\\LanguageResources\\PM.pl-PL.xaml", UriKind.Relative);
+                System.Windows.Application.Current.Resources.MergedDictionaries.Add(languageDictionaryPM);
+            }
+            else if (ISOLanguageHolder.ISOLanguage == "en")
+            {
+                var languageDictionaryPM = new ResourceDictionary();
+                languageDictionaryPM.Source = new Uri("\\LanguageResources\\PM.en-EN.xaml", UriKind.Relative);
+                System.Windows.Application.Current.Resources.MergedDictionaries.Add(languageDictionaryPM);
+            }
+        }
         static class InputKeyClass
         {
             private const byte VK_VOLUME_MUTE = 0xAD;

@@ -83,6 +83,7 @@
     <Compile Include="TCPSender\AutoConfigPC.cs" />
     <Compile Include="TCPSender\ClientHolder.cs" />
     <Compile Include="TCPSender\CommClientPC.cs" />
+    <Compile Include="TCPSender\ISOLanguageHolder.cs" />
     <Compile Include="TCPSender\PM.cs" />
     <Compile Include="TCPSender\Program.cs" />
     <Compile Include="TCPSender\Test.cs" />

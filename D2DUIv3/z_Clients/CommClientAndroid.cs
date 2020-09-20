@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading;
 using Android.App;
@@ -500,6 +501,7 @@ namespace D2DUIv3
         public void InstantiatePMClient()
         {
             writer.Write((int)ClientFlags.PM_Instantiate);
+            writer.Write(CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString());
         }
 
         public void AskForPM()
